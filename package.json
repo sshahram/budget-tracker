@@ -21,11 +21,7 @@
   },
   "homepage": "https://github.com/coding-boot-camp/unit18hw#readme",
   "devDependencies": {
-    "file-loader": "^6.2.0",
-    "webpack": "^4.43.0",
-    "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^3.3.11",
-    "webpack-pwa-manifest": "^4.3.0"
+    "file-loader": "^6.2.0"
   },
   "dependencies": {
     "compression": "^1.7.4",
