@@ -4,11 +4,11 @@ const CACHE_NAME = APP_PREFIX + VERSION;
 
 const FILES_TO_CACHE = [
     "/",
-    "/index.html",
-    "/css/style.css",
     "/js/idb.js",
     "/js/index.js",
-    "/manifest.json"
+    "/manifest.json",
+    "/css/styles.css"
+    
 ];
 // Cache resources
 self.addEventListener('install', function (e) {
@@ -19,26 +19,6 @@ self.addEventListener('install', function (e) {
         })
     )
 })
-// Respond with cached resources
-self.addEventListener('fetch', function (e) {
-    console.log('fetch request : ' + e.request.url)
-    e.respondWith(
-        caches.match(e.request).then(function (request) {
-            if (request) { // if caches is available, respond with cache
-                console.log('responding with cache : ' + e.request.url)
-                return request
-            } else {       // if there are no cache, try fetching request
-                console.log('file is not cached, fetching : ' + e.request.url)
-                return fetch(e.request)
-            }
-
-            // You can omit if/else for console.log & put one line below like this too
-            // return request || fetch(e.request)
-        })
-    )
-})
-
-
 
 // Delete outdated caches
 self.addEventListener('activate', function (e) {
@@ -60,3 +40,23 @@ self.addEventListener('activate', function (e) {
         })
     );
 });
+
+// Respond with cached resources
+self.addEventListener('fetch', function (e) {
+    console.log('fetch request : ' + e.request.url)
+    e.respondWith(
+        caches.match(e.request).then(function (request) {
+            if (request) { // if caches is available, respond with cache
+                console.log('responding with cache : ' + e.request.url)
+                return request
+            } else {       // if there are no cache, try fetching request
+                console.log('file is not cached, fetching : ' + e.request.url)
+                return fetch(e.request)
+            }
+
+            // You can omit if/else for console.log & put one line below like this too
+            // return request || fetch(e.request)
+        })
+    )
+})
+
